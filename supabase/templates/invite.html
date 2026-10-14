@@ -1,0 +1,25 @@
+<h2>You have been invited</h2>
+
+<p><b>{{ .InviterEmail }}</b> invited you to the Supermarket POS app as a member of their team.</p>
+<p>Accept the invitation below to set your password and activate your account. Your role (Cashier, Manager, etc.) is shown in the app's Team screen.</p>
+<p><a href="{{ .ConfirmationURL }}">Accept the invitation</a></p>
+<p>After accepting, sign in to the app with this email address and the password you just created. If you were not expecting this invitation you can safely ignore this email.</p>
+
+<!--
+  Source of truth for the staff-invite email (BACKEND_SETUP.md §16).
+
+  The role itself cannot be templated — Supabase exposes no role variable to
+  this template. The role is written to profiles.role_id by the staff-invite
+  Edge Function and is visible in Team -> member subtitle; the audit entry
+  `user.invite` records role_key + role_name.
+
+  Apply with:
+    Dashboard -> Authentication -> Email Templates -> Invite user
+  or
+    PATCH /v1/projects/{ref}/config/auth
+    { "mailer_subjects_invite": "...",
+      "mailer_templates_invite_content": "<contents of this file>" }
+
+  Note: free-tier projects on the default Supabase email provider reject
+  template edits (HTTP 400) — configure custom SMTP first.
+-->

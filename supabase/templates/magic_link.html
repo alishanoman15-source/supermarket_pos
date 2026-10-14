@@ -1,0 +1,24 @@
+<h2>Your sign-in code</h2>
+
+<p>Enter this 6-digit code in the app to finish signing in. It expires shortly and can only be used once.</p>
+<p style="font-size:32px;letter-spacing:10px;font-weight:bold;">{{ .Token }}</p>
+<p>If you didn't request this code you can safely ignore this email.</p>
+
+<!--
+  Source of truth for the OTP email (BACKEND_SETUP.md §16).
+
+  `signInWithOtp` shares the "Magic Link" template with the magic-link flow:
+  leaving {{ .ConfirmationURL }} in the template makes Supabase mail a sign-in
+  LINK (which no Flutter screen handles), while {{ .Token }} mails the 6-digit
+  CODE the OTP screen expects. Do not re-add ConfirmationURL here.
+
+  Apply with:
+    Dashboard -> Authentication -> Email Templates -> Magic Link
+  or
+    PATCH /v1/projects/{ref}/config/auth
+    { "mailer_subjects_magic_link": "Your sign-in code",
+      "mailer_templates_magic_link_content": "<contents of this file>" }
+
+  Note: free-tier projects on the default Supabase email provider reject
+  template edits (HTTP 400) — configure custom SMTP first.
+-->

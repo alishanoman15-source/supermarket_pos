@@ -1,0 +1,65 @@
+name: supermarket_pos
+description: "Supermarket Inventory & POS System (Flutter + Supabase)."
+version: 1.0.0+1
+
+environment:
+  sdk: '^3.13.4'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  
+  # Backend
+  supabase_flutter: ^2.5.0
+  
+  # State Management
+  flutter_riverpod: ^2.5.1
+  
+  # Navigation
+  go_router: ^14.0.0
+  
+  # UI & Styling
+  google_fonts: ^6.2.1
+  flutter_svg: ^2.0.10
+  
+  # Barcode Scanner
+  mobile_scanner: ^5.2.0
+
+  # Money = Decimal (never double for money)
+  decimal: ^3.2.6
+
+  # Receipts / printing (SPEC §19): PDF fallback + share/print dialog
+  pdf: ^3.11.1
+  printing: ^5.13.4
+
+  # Idempotency keys for sales / returns (SPEC §62)
+  uuid: ^4.5.1
+
+  # Held-cart persistence, per device + per user (SPEC §62)
+  shared_preferences: ^2.5.0
+
+  # Date/currency formatting (PKR, Asia/Karachi)
+  intl: any
+  drift: ^2.35.1
+  drift_flutter: ^0.3.1
+  connectivity_plus: ^7.3.2
+  http: ^1.6.0
+  file_picker: ^13.1.0
+  share_plus: ^13.3.1
+  excel: ^4.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  drift_dev: ^2.35.1
+  build_runner: ^2.16.2
+
+flutter:
+  uses-material-design: true
+  generate: true
